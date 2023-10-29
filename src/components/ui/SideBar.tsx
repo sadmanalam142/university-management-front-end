@@ -1,8 +1,8 @@
-"use client";
-
+"use client"
 import { useState } from "react";
 import { Layout, Menu } from "antd";
 import type { MenuProps } from "antd";
+import { useEffect } from "react";
 
 import {
   DesktopOutlined,
@@ -11,8 +11,8 @@ import {
   TeamOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { USER_ROLE } from "@/constants/role";
 import { sidebarItems } from "@/constants/sidebarItems";
+import { getUserInfo } from "@/services/auth.service";
 
 const { Sider } = Layout;
 
@@ -49,8 +49,15 @@ const items: MenuItem[] = [
 
 const SideBar = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const [role, setRole] = useState('');
+  const userInfo = getUserInfo() as any;
 
-  const role = USER_ROLE.ADMIN;
+  useEffect(() => {
+    if (userInfo) {
+      const userRole = userInfo?.role;
+      setRole(userRole);
+    }
+  }, [userInfo]);
 
   return (
     <div>
