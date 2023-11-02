@@ -17,7 +17,7 @@ const AdminPage = () => {
     }
   }, [userInfo]);
     return (
-        <div>
+        <div style={{ padding: "20px" }}>
             <UMBreadCrumb
         items={[
           {
