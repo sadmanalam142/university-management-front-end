@@ -1,5 +1,7 @@
 "use client";
+import { adminSchema } from "@/app/Schemas/adminSchema";
 import Form from "@/components/Forms/Form";
+import FormDatePicker from "@/components/Forms/FormDatePicker";
 import FormInput from "@/components/Forms/FormInput";
 import FormInputTextArea from "@/components/Forms/FormInputTextArea";
 import FormSelectField from "@/components/Forms/FormSelectField";
@@ -11,6 +13,7 @@ import {
   genderOptions,
 } from "@/constants/global";
 import { getUserInfo } from "@/services/auth.service";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, Col, Row } from "antd";
 import { useState, useEffect } from "react";
 
@@ -49,7 +52,7 @@ const CreateAdmin = () => {
       />
       <h1>Create Admin</h1>
       <div>
-        <Form submitHandler={onSubmit}>
+        <Form submitHandler={onSubmit} resolver={yupResolver(adminSchema)}>
           <div
             style={{
               border: "1px solid lightBlue",
@@ -193,12 +196,7 @@ const CreateAdmin = () => {
                 className="gutter-row"
                 span={8}
               >
-                <FormInput
-                  name="password"
-                  type="password"
-                  size="large"
-                  label="Password"
-                />
+                <FormDatePicker name="admin.dateOfBirth" size="large" label="Date Of Birth"/>
               </Col>
               <Col
                 style={{ marginTop: "10px" }}

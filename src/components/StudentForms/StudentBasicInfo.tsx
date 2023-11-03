@@ -1,0 +1,84 @@
+import { Col, Row } from "antd";
+import FormInput from "../Forms/FormInput";
+import FormDatePicker from "../Forms/FormDatePicker";
+import FormSelectField from "../Forms/FormSelectField";
+import { bloodGroupOptions } from "@/constants/global";
+import FormInputTextArea from "../Forms/FormInputTextArea";
+
+const StudentBasicInfo = () => {
+  return (
+    <div
+      style={{
+        border: "1px solid #d9d9d9",
+        borderRadius: "5px",
+        padding: "15px",
+        marginBottom: "10px",
+        marginTop: "10px",
+      }}
+    >
+      <Row gutter={{ xs: 24, xl: 8, lg: 8, md: 24 }}>
+        <Col span={8} style={{ margin: "10px 0" }}>
+          <FormInput
+            type="email"
+            name="student.email"
+            label="Email address"
+            size="large"
+          />
+        </Col>
+
+        <Col span={8} style={{ margin: "10px 0" }}>
+          <FormInput
+            name="student.contactNo"
+            label="Contact no."
+            size="large"
+          />
+        </Col>
+
+        <Col span={8} style={{ margin: "10px 0" }}>
+          <FormInput
+            name="student.emergencyContactNo"
+            label="Emergency contact no."
+            size="large"
+          />
+        </Col>
+
+        <Col span={12} style={{ margin: "10px 0" }}>
+          <FormDatePicker
+            name="student.dateOfBirth"
+            label="Date of birth"
+            size="large"
+          />
+        </Col>
+
+        <Col span={12} style={{ margin: "10px 0" }}>
+          <FormSelectField
+            name="student.bloodGroup"
+            label="Blood group"
+            options={bloodGroupOptions}
+            size="large"
+          />
+        </Col>
+
+        <Col span={12} style={{ margin: "10px 0" }}>
+          <FormInputTextArea
+            name="student.presentAddress"
+            label="Present address"
+            row={4}
+            maxLength={6}
+          />
+        </Col>
+
+        <Col span={12} style={{ margin: "10px 0" }}>
+          <FormInputTextArea
+            name="student.permanentAddress"
+            label="Permanent address"
+            row={4}
+            maxLength={6}
+          />
+        </Col>
+      </Row>
+    </div>
+  );
+};
+
+export default StudentBasicInfo;
